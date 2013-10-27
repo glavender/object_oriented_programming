@@ -76,16 +76,11 @@ class Basket
     @container.each do |x|
       final += x.subtotal
     end
-    #return (final + self.total_tax) / 100
-    return Utils::fake_decimal(final + self.total_tax)
+    return Utils::fake_decimal(final + total_tax)
   end
   def print_receipt
-    #@container.each {|x| puts "#{x.qty} #{x.name}: #{x.item_total / 100}"}
     @container.each {|x| puts "#{x.qty} #{x.name}: #{Utils::fake_decimal(x.item_total)}"}
-
-    #puts "Sales Taxes: #{total_tax / 100}"
     puts "Sales Taxes: #{Utils::fake_decimal(total_tax)}"
-
     puts "Total: #{total}"
   end
 end
